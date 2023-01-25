@@ -1,0 +1,5 @@
+MAIN MENU
+Please, select an option:
+1. Display current files
+2. Manipulate files
+3. Exit Application

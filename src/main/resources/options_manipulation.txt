@@ -1,0 +1,8 @@
+				[Main menu/File manipulation] Please, select an option:
+------------------------------------------------------------------------------------------------
+				0. Change search path
+				1. Add a file to the system.
+				2. Delete a file from the system.
+				3. Search a file in the system.
+				4. Return to MAIN MENU.
+------------------------------------------------------------------------------------------------
