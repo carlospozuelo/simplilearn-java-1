@@ -1,20 +1,20 @@
 package main.java;
 
 import java.util.TreeMap;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import javax.swing.JFileChooser;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 
-public class FileManipulator {
+public class FileManipulator implements Serializable {
 	
-	
-	
+	private static final long serialVersionUID = 1L;
+
 	private Map<String, String> allFiles;
 	
 	private String currentPrefix;
@@ -103,7 +103,7 @@ public class FileManipulator {
 		System.out.println("The current search path is " + currentPrefix);
 		System.out.println("Introduce a new search path, or leave blank to cancel");
 		String name = Utilities.askInputString();
-		if (!name.isBlank()) {
+		if (!name.isEmpty()) {
 			if (Utilities.isValidPath(name) && new File(name).isDirectory()) {
 				this.currentPrefix = name;
 				System.out.println("Search path registered succesfully!");
@@ -129,7 +129,7 @@ public class FileManipulator {
 		String name = Utilities.askInputString();
 		
 		// To also add by path and not only by shortcut
-		Set<String> results = allFiles.keySet().stream().filter(key -> name.equals(allFiles.get(key))).collect(Collectors.toSet());
+		Set<String> results = allFiles.keySet().stream().filter(key -> allFiles.get(key).contains(name)).collect(Collectors.toSet());
 		
 		if (allFiles.containsKey(name))
 			results.add(allFiles.get(name));
